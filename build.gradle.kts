@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.issyzone"
-version = "1.0.5-SNAPSHOT"
+version = "1.0.10-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -40,7 +40,7 @@ intellijPlatform {
             untilBuild = "243.*"       // 最高兼容版本
         }
         changeNotes = """
-         Initial plugin version for Android Studio Meerkat 2024.3.1
+        |Mprint Plugin 1.0.6-SNAPSHOT 增加Mprint模版代码
     """.trimIndent()
     }
 }

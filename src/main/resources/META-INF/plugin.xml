@@ -42,15 +42,21 @@
         </action>
     </actions>
     <actions>
-        <!-- 添加到项目右键菜单 -->
-        <action id="CreateMprintActivity"
-                class="com.issyzone.syzds.action.CreateMprintActivityAction"
-                text="New MPrint Activity"
-                description="Create MPrint Activity">
-            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        <!-- 1. 定义一个分组（子菜单） -->
+        <group id="MPrint.NewGroup"
+               text="MPrint"
+               description="MPrint related actions"
+               popup="true">  <!-- 可选图标 -->
 
-            <!-- 可选：同时添加到编辑器右键菜单 -->
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-        </action>
+            <!-- 2. 把你的 Action 放在这个分组里，并设置 anchor="first" -->
+            <action id="CreateMprintActivity"
+                    class="com.issyzone.syzds.action.CreateMprintActivityAction"
+                    text="MPrint Activity"
+                    description="Create MPrint Activity">
+                <!-- 可选图标 -->
+            </action>
+
+            <add-to-group group-id="NewGroup" anchor="first"/>
+        </group>
     </actions>
 </idea-plugin>

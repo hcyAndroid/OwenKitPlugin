@@ -20,13 +20,13 @@ import org.jetbrains.android.dom.manifest.Manifest
 class CreateMprintActivityDialog(var project: Project?, val e: AnActionEvent) : DialogWrapper(project) {
     private lateinit var activityNameField: JTextField
     private lateinit var generateLayoutCheckbox: JCheckBox
-    private lateinit var addToManifestCheckbox: JCheckBox
-
+   // private lateinit var addToManifestCheckbox: JCheckBox
+    private lateinit var isActivityCheckBox: JCheckBox
     //  private lateinit var templateTypeCombo: JComboBox<String>
     private val logger = Logger.getInstance(CreateMprintActivityDialog::class.java)
 
     init {
-        title = "Create New Activity"
+        title = "Create New Activity Or Fragment"
         init()
     }
 
@@ -67,9 +67,11 @@ class CreateMprintActivityDialog(var project: Project?, val e: AnActionEvent) : 
         generateLayoutCheckbox = JCheckBox("Generate layout file", true)
         panel.add(generateLayoutCheckbox)
 
-        addToManifestCheckbox = JCheckBox("Add to AndroidManifest.xml", true)
-        panel.add(addToManifestCheckbox)
+        isActivityCheckBox= JCheckBox("isActivity", true)
 
+//        addToManifestCheckbox = JCheckBox("Add to AndroidManifest.xml", true)
+//        panel.add(addToManifestCheckbox)
+        panel.add(isActivityCheckBox)
         return panel
     }
 
@@ -84,13 +86,18 @@ class CreateMprintActivityDialog(var project: Project?, val e: AnActionEvent) : 
             Messages.showErrorDialog("Error: Could not determine module or package name", "Error")
             return
         }
+        if (project==null){
+            Messages.showErrorDialog("Error: Could not determine project", "Error")
+            return
+        }
 
         //  val templateType = templateTypeCombo.selectedItem as String
         val generateLayout = generateLayoutCheckbox.isSelected
-        val addToManifest = addToManifestCheckbox.isSelected
-        logger.info("开始创建= $activityName= $generateLayout $addToManifest")
+        val isActivity = isActivityCheckBox.isSelected
+        //val addToManifest = addToManifestCheckbox.isSelected
+       // logger.info("开始创建= $activityName= $generateLayout $addToManifest")
         // 执行创建逻辑
-        MprintActivityCreator(activityName, generateLayout, addToManifest,currentModule!!,currentPackName!!).create(project)
+        MprintActivityCreator(activityName, generateLayout, true,currentModule!!,currentPackName!!,isActivity).create(project)
         super.doOKAction()
     }
 }
