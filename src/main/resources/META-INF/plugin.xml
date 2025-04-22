@@ -1,0 +1,56 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.issyzone.SyzDs</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>SyzDs</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor url="https://www.baidu.com">owen</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>owen插件集合11111111111111111111111111111111111111111111111111111111111</description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+
+    <!--    <depends>com.intellij.modules.platform</depends>-->
+    <!--    <depends>org.jetbrains.android</depends>-->
+    <!--    <depends>com.intellij.modules.androidstudio</depends>-->
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+
+    </extensions>
+
+    <actions>
+        <action id="MinimalAction"
+                class="com.issyzone.syzds.action.ExcelInternationAction"
+                text="OwenKit"
+                description="Minimal plugin demo">
+            <!-- 添加到项目视图的右键菜单 -->
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+
+            <!-- 可选：同时添加到编辑器右键菜单 -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+    <actions>
+        <!-- 添加到项目右键菜单 -->
+        <action id="CreateMprintActivity"
+                class="com.issyzone.syzds.action.CreateMprintActivityAction"
+                text="New MPrint Activity"
+                description="Create MPrint Activity">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+
+            <!-- 可选：同时添加到编辑器右键菜单 -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
